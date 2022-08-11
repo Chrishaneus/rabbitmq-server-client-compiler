@@ -17,9 +17,8 @@ RUN apt-get update && \
 RUN apt-get install -y \
     nodejs npm
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
-    apt-get install -y nodejs
-RUN npm install prompt-sync
-
+    apt-get install -y
+RUN npm install
 
 # start command
 CMD [ "python", "server.py" ]

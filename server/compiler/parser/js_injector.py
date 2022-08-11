@@ -1,12 +1,13 @@
-import subprocess
+import subprocess, shlex
 
 def js_injector(code):
-    with open('app/helpers/parser/jshelper/in.txt', 'w') as f:
+    with open('/usr/src/app/server/compiler/parser/jshelper/in.txt', 'w') as f:
         f.write(code)
 
-    subprocess.Popen("node helper.js injectjs", cwd="./app/helpers/parser/jshelper")
+    args = shlex.split("node helper.js injectjs")
+    subprocess.Popen(args, cwd="/usr/src/app/server/compiler/parser/jshelper/")
 
-    with open('app/helpers/parser/jshelper/out.txt', 'r') as f:
+    with open('/usr/src/app/server/compiler/parser/jshelper/out.txt', 'r') as f:
         lines = f.readlines()
         print(f.read())
 

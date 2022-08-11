@@ -56,6 +56,8 @@ def compile(code, lang, tests, filename='temp'):
         exec_time.append(exec_t)
         exitcodes.append(exitcode)
 
+    injected = inject(code,lang)
+
     try:
         injected = inject(code,lang)
         write_code_to_file(filename=filename+"_injected", ext=language['extension'], content=injected)
@@ -76,6 +78,9 @@ def compile(code, lang, tests, filename='temp'):
         loop_count.append(-2)
         call_count.append(-2)
 
-    os.remove(filename+'.'+language['extension'])
+    try: # remove the temporary file
+        os.remove(filename+'.'+language['extension'])
+        os.remove(filename+'_injected'+'.'+language['extension'])
+    except: pass
 
     return exitcodes, stdout, exec_time, loop_count, call_count
