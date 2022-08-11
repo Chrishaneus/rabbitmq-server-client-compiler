@@ -8,7 +8,7 @@ RUN pip install pika
 ENV PYTHONUNBUFFERED=1
 
 # declare the source directory
-WORKDIR /usr/src/app/client
+WORKDIR /app
 
 # copy the file
 COPY client.py .

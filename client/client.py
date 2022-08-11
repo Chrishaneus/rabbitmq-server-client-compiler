@@ -55,8 +55,7 @@ compilation_rpc = CompilationRpcClient()
 print(" [x] Requesting compilation results")
 response = compilation_rpc.compile(
     code="""
-var prompt = require('prompt-sync')();
-var n = prompt('My input! ');
+console.log("AAAAAAAAAA");
 """,
     lang="javascript",
     tests=["aefiaji", "efiajij"],

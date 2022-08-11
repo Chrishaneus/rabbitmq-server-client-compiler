@@ -3,7 +3,7 @@ from subprocess import PIPE, Popen, run
 from compiler.parser.ast_parser import inject, exec_details
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
-lang_details = json.load(open('/usr/src/app/server/compiler/lang.json'))
+lang_details = json.load(open('/app/compiler/lang.json'))
 
 # Executes a shell command
 def get_exitcode_stdout_stderr(cmd, test = None, timeout=5):

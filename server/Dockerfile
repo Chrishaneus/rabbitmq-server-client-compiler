@@ -5,7 +5,7 @@ FROM python:3.9
 ENV PYTHONUNBUFFERED=1
 
 # declare the source directory
-WORKDIR /usr/src/app/server
+WORKDIR /app
 
 # copy the files
 COPY . .
@@ -18,7 +18,6 @@ RUN apt-get install -y \
     nodejs npm
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get install -y
-RUN npm install
 
 # start command
 CMD [ "python", "server.py" ]
