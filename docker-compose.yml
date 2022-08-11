@@ -1,0 +1,49 @@
+version: "3.9"
+
+# list of containers to be run
+services:
+
+  # rabbit_mq container uses the default rabbitmq image
+  # exposes the ports
+  # uses the specified volume
+  rabbit_mq:
+
+    # we use management image to get the
+    # plugin for web dashboard
+    image: rabbitmq:3.8-rc-management
+    container_name: rabbit_mq
+    ports:
+        - '5672:5672'
+        - '15672:15672'
+    volumes:
+      - rabbit_mqdata:/usr/share/rabbitmq/data
+
+  # consumer container builds the consumer image
+  # and consumes messages from the queue
+  # we spawn 1 consumer container to run parallely
+  # on the same queue
+  server:
+    build: server
+    container_name: server
+    depends_on:
+        - rabbit_mq
+    environment:
+        AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    volumes:
+      - ./server:/usr/src/app/server
+
+  # produces container builds the producer image
+  # and produces message to the queue
+  client:
+    build: client
+    container_name: client
+    depends_on:
+        - rabbit_mq
+        - server
+    environment:
+        AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    volumes:
+      - ./client:/usr/src/app/client
+volumes:
+    rabbit_mqdata:
+      driver: local

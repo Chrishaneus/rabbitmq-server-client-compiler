@@ -1,0 +1,19 @@
+process.stdin.on('data', data => {
+    let AZEUS_CALL_COUNTER = 0;
+    let AZEUS_LOOP_COUNTER = 0;
+    data = data.toString();
+    function fib(n) {
+        AZEUS_CALL_COUNTER++;
+        let a = 0, b = 1, c = n;
+        for (let i = 2; i <= n; i++) {
+            AZEUS_LOOP_COUNTER++;
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+    ;
+    console.log(fib(parseInt(data)));
+    console.log('\nAZEUS_LOOP_COUNTER = ' + AZEUS_LOOP_COUNTER.toString() + '\nAZEUS_CALL_COUNTER = ' + AZEUS_CALL_COUNTER.toString());
+});

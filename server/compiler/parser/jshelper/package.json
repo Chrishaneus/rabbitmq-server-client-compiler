@@ -1,0 +1,24 @@
+{
+  "name": "jscodegentest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksons/jscodegen.py.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksons/jscodegen.py/issues"
+  },
+  "homepage": "https://github.com/ksons/jscodegen.py#readme",
+  "dependencies": {
+    "ast-traverse": "^0.1.1",
+    "escodegen": "^2.0.0",
+    "esprima": "^4.0.1"
+  }
+}
