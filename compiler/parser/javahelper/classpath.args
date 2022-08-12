@@ -1,0 +1,1 @@
+-classpath ./lib/slf4j-nop-1.6.1.jar;./lib/spoon-core-10.1.1-jar-with-dependencies.jar;

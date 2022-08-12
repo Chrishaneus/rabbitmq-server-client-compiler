@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class App {
+    static int AZEUS_CALL_COUNTER = 0;
+
+    static int AZEUS_LOOP_COUNTER = 0;
+
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        int firstNum = Integer.parseInt(scanner.nextLine());
+        int a = 0;
+        while (a <= 10) {
+            AZEUS_LOOP_COUNTER += 1;
+            a = 12;
+        } 
+        System.out.println(fib(firstNum));
+        scanner.close();
+        System.out.println("AZEUS_CALL_COUNTER = " + Integer.toString(AZEUS_CALL_COUNTER));
+        System.out.println("AZEUS_LOOP_COUNTER = " + Integer.toString(AZEUS_LOOP_COUNTER));
+    }
+
+    public static int fib(int n) {
+        AZEUS_CALL_COUNTER += 1;
+        if (n <= 2) {
+            return 1;
+        }
+        return App.fib(n - 1) + App.fib(n - 2);
+    }
+}
